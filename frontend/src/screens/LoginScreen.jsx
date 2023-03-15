@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { login } from '../actions/userLogin'
 import { Link, useNavigate } from 'react-router-dom'
+import toast, { Toaster } from 'react-hot-toast';
 
 const LoginScreen = () => {
 
@@ -12,7 +13,7 @@ const LoginScreen = () => {
     const submitHandler = () => {
         console.log(email, password);
         if (!email || !password) {
-            console.log("all fields are mandatory");
+            toast.error("All fields are mandatory!")
         } else {
             dispatch(login(email, password))
         }
@@ -31,6 +32,7 @@ const LoginScreen = () => {
 
     return (
         <div>
+            <div><Toaster /></div>
             <section class="grid h-screen place-content-center bg-slate-900 text-slate-300">
                 <div class="mb-10 text-center text-indigo-400">
                     <h1 class="text-3xl font-bold tracking-widest">Login</h1>
@@ -42,7 +44,7 @@ const LoginScreen = () => {
                         <p id="validation" class="text-center text-orange-500 italic text-sm"></p>
                     </div>
                     <button onClick={submitHandler} id="showPw" class="rounded-full bg-indigo-500 p-2 px-4 text-white hover:bg-indigo-700"><span id="showHide"></span> Sign In</button>
-                   <Link to="/register"><span class="text-sm ml-2 hover:text-blue-500 cursor-pointer">Don't have an account?</span></Link> 
+                    <Link to="/register"><span class="text-sm ml-2 hover:text-blue-500 cursor-pointer">Don't have an account?</span></Link>
                 </div>
             </section>
         </div>

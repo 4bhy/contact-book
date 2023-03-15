@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
 import { login, register } from '../actions/userLogin'
+import toast, { Toaster } from 'react-hot-toast';
 
 const RegisterScreen = () => {
 
@@ -14,10 +15,10 @@ const RegisterScreen = () => {
     const [cpassword, setCpassword] = useState("")
 
     const submitHandler = () => {
-        if (!email || !password || !cpassword) {
-            console.log("all fields are mandatoey");
+        if (!email || !name || !password || !cpassword) {
+            toast.error("All fields are mandatory!")
         } else if (password != cpassword) {
-            console.log("password doesnt mach");
+            toast.error("Passwords doesnt match!.")
         } else {
             dispatch(register(name, email, password))
         }
@@ -34,6 +35,7 @@ const RegisterScreen = () => {
 
     return (
         <div>
+            <div><Toaster/></div>
             <section class="grid h-screen place-content-center bg-slate-900 text-slate-300">
                 <div class="mb-10 text-center text-indigo-400">
                     <h1 class="text-3xl font-bold tracking-widest">Register</h1>
