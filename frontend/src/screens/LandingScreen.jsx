@@ -83,14 +83,11 @@ const LandingScreen = () => {
         setOpens(false);
     };
 
-   
-
-
 
     return (
         <div>
             <div><Toaster /></div>
-           <Navbar/>
+            <Navbar />
             <div class="bg-gray-900 w-full min-h-screen flex flex-col items-center p-4">
                 {contactList?.contacts?.length !== 0 ? (
                     contactList?.contacts?.map((data, index) => (
@@ -101,9 +98,7 @@ const LandingScreen = () => {
                                     <div class="text-md font-bold">{data.fname} {data.lname}</div>
                                 </div>
                                 <div class="flex items-center space-x-4">
-                                    <div class="cursor-pointer">
-                                        <img class="w-5 h-5 rounded-lg" src="https://i.pravatar.cc/300" />
-                                    </div>
+
                                     <div onClick={() => {
                                         setCurrentContact({
                                             fname: data.fname,
